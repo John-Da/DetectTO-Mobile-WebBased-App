@@ -31,8 +31,8 @@
   <li><strong>Expo App:</strong> <code>npx expo start</code></li>
   <li><strong>Run the servers:</strong>
     <ul>
-      <li>Flask server → <code>cd backend && python3 app.py</code></li>
-      <li>Expo app → <code>cd DetectTO && npx expo start</code></li>
+      <li>Flask server → <code>cd backend</code> → <code> python3 app.py</code></li>
+      <li>Expo app → <code>cd DetectTO</code> → <code> npx expo start</code></li>
     </ul>
     <li> --> You can Download the RESULT Image to your device.</li>
   </li>
@@ -65,7 +65,7 @@
 
 ## Current UI/UX:
 
-|                                          |                                             |                                        |
-| :--------------------------------------- | :------------------------------------------ | :------------------------------------- |
-
+|                 Image                    |                     About                   |
+| :--------------------------------------- | :------------------------------------------ |
+|                                          |                                             |
 
