@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+
+    <style>
+        .back_link {
+            max-width: 700px;  /* same as .result_container */
+            margin: 20px auto 10px;
+            font-size: 2rem;
+            font-weight: normal;
+            font-family: Arial, sans-serif;
+        }
+
+        .back_link a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .back_link a:hover {
+            opacity: 0.8;
+        }
+
+        .result_container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .result_container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #222;
+        }
+
+        .result_container h2 a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 1rem;
+        }
+
+        .result_container h2 a:hover {
+            text-decoration: underline;
+        }
+
+        .image_box {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image_box img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .img_details {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .img_details h2 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .img_box p {
+            margin: 5px 0;
+            padding: 6px 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .img_box p .conf {
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="back_link"><a href="/"> 🔙 </a></h2>
+    <div class="result_container">
+        <h1>Image Result</h1>
+
+        <div class="image_box">
+            <img 
+                src="{{ image_url }}" 
+                alt="Uploaded Image"
+            >
+        </div>
+
+        <div class="img_details">
+            <h2>Details</h2>
+            <p><strong>Applied:</strong><br> Model: {{ model_name }} | Conf: {{ thresholds }} <br> Label Font Size: {{font_scale}} </p>
+            <div class="img_box">
+                {% for label, idx, confidence in detections %}
+                    <p>{{ label }} {{ idx }} <span class="conf">({{ '%.2f'|format(confidence) }})</span></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

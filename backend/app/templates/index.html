@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing APP Flow - Onnx Model</title>
+
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+        }
+
+        .container h1 {
+            margin-bottom: 25px;
+            font-size: 2rem;
+            color: #222;
+        }
+
+        .input_container form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .input_container label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: block;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .img_input_box input[type="file"] {
+            border: 1px solid #ddd;
+            padding: 8px;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .model_container select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            cursor: pointer;
+            background: #fafafa;
+        }
+
+        .iou_box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .iou_box input[type="range"] {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .iou_box span {
+            min-width: 40px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .scale_box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* top row: label + value */
+        .labelvale {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .labelvale label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .labelvale span {
+            font-size: 13px;
+            font-weight: 500;
+            color: #555;
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 6px;
+            min-width: 40px;
+            text-align: right;
+        }
+
+        /* slider row */
+        .scale_indi {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scale_indi p {
+            font-size: 12px;
+            color: #666;
+            margin: 0;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        /* range input styling */
+        .scale_box input[type="range"] {
+            flex: 1;
+            appearance: none;
+            height: 6px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .imagesize_container {
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .imagesize_container label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .img_inputbox {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap; /* responsive for smaller screens */
+        }
+
+        .img_inputbox div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex: 1; /* inputs take equal width */
+        }
+
+        .img_inputbox p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .img_inputbox input[type="number"] {
+            flex: 1;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .img_inputbox input[type="number"]:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+        }
+
+
+
+
+        button[type="submit"] {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background: #0056b3;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="content" class="container">
+        <h1>Testing</h1>
+        <div class="input_container">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                
+                <div class="img_input_box">
+                    <label for="image">Upload Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+                
+                <div class="model_container">
+                    <label for="models">Model</label>
+                    <select name="models" id="models">
+                        {% if model_list %}
+                            {% for mdl in model_list %}
+                                <option value="{{ mdl }}">{{ mdl }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option value="">No models available</option>
+                        {% endif %}
+                    </select>
+                </div>
+                
+                <div class="iou_box">
+                    <label for="iou">IoU Threshold</label>
+                    <input type="range" name="iou" id="iou" value="0.2" step="0.01" min="0" max="1">
+                    <span id="iou_value">0.20</span>
+                </div>
+
+                <div class="scale_box">
+                    <div class="labelvale">
+                        <label for="scale">Label Size</label>
+                        <span id="scale_value">500</span>
+                    </div>
+                    <div class="scale_indi">
+                        <p>larger</p>
+                        <input type="range" name="scale" id="scale" value="500" step="10" min="100" max="1200">
+                        <p>smaller</p>
+                    </div>
+                </div>
+
+                <div class="imagesize_container">
+                    <label for="image_size">Image Size:</label>
+                    <div class="img_inputbox">
+                        <div class="img_w">
+                            <p>w:</p>
+                            <input type="number" name="img_width" id="img_width" value="640">
+                        </div>
+                        <div class="img_h">
+                            <p>h:</p>
+                            <input type="number" name="img_height" id="img_height" value="640">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit">🚀 Start</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        window.onload = () => {
+            const confSlider = document.getElementById("iou");
+            const confValue = document.getElementById("iou_value");
+
+            confSlider.addEventListener("input", () => {
+                confValue.textContent = parseFloat(confSlider.value).toFixed(2); // always 0.20 style
+            });
+
+            const scaleSlider = document.getElementById("scale");
+            const scaleValue = document.getElementById("scale_value");
+
+            scaleSlider.addEventListener("input", () => {
+                scaleValue.textContent = scaleSlider.value;
+            });
+        };
+    </script>
+
+
+</body>
+</html>
