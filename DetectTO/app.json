@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "DetectTO",
+    "slug": "DetectTO",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo.png",
+    "scheme": "detectto",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.DetectTO",
+      "infoPlist": {
+        "NSPhotoLibraryAddUsageDescription": "Allow this app to save images to your photo library."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/logo.png",
+        "backgroundImage": "./assets/images/logo.png",
+        "monochromeImage": "./assets/images/logo.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.DetectTO",
+      "permissions": [
+        "READ_MEDIA_IMAGES",
+        "READ_MEDIA_VIDEO",
+        "WRITE_EXTERNAL_STORAGE"  // needed for Android < 33
+      ]
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/logo.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/logo.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
