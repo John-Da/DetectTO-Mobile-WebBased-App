@@ -126,6 +126,9 @@ First, navigate to the project directory:
 
 ## Current UI/UX:
 
+> Camera mode will be added soon.
+
+> Some HTML templates are provided to test on server side. ( *Adjustment required* )
 
 | *Start Page* | *Home Page* | *Upload Page* | *Input Screen* | *Details Screen* | *Saved Results* |
 | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
