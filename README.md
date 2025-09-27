@@ -19,6 +19,7 @@
 
 ## Demo Image
 
+- model: yolo11m.onnx
 - iou: 0.2
 - font scale: 700
 - onnx imgsz: 640x640
