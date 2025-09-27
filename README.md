@@ -78,8 +78,25 @@ First, navigate to the project directory:
 </ul>
 
 > [!Note]
-> This is a basic interface demo for testing and visualizing the model with sample images.  
-> You can **replace with your own custom ONNX files** in the backend (additional utils may be needed for proper integration).
+> - This is a basic interface demo for testing and visualizing the model with sample images.  
+> - You can **replace it with your own custom ONNX files** in the backend (additional utils may be needed for proper integration).  
+> `<backend/app/model_utils/models/>`
+
+> [!Tip]
+> - If you wish to use YOLO with ONNX, export the model as default for this demo project:
+>
+> ```python
+> from ultralytics import YOLO
+> 
+> # Load a model
+> model = YOLO("yolo11n.pt")        # Load an official model
+> # or
+> model = YOLO("path/to/best.pt")   # Load a custom trained model
+> 
+> # Export the model to ONNX
+> model.export(format="onnx")
+> ```
+
 
 <br>
 
