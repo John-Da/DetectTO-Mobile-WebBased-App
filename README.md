@@ -17,8 +17,7 @@
   </p>
 </div>
 
-
-<br>
+## Demo Image
 
 <div>
   <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/test_img.jpg" alt="Test Image" />
@@ -27,22 +26,20 @@
 
 <br>
 
-<h2>🚀 Usage: After downloading the repo</h2>
+<h2>🚀 Usage: After Downloading the Repo</h2>
 <ol>
-  <li><strong>Expo App:</strong> <code>npx expo start</code></li>
   <li><strong>Run the servers:</strong>
     <ul>
-      <li>Flask server → <code>cd backend</code> → <code> python3 app.py</code></li>
-      <li>Expo app → <code>cd DetectTO</code> → <code> npx expo start</code></li>
+      <li>Flask server % <code>cd backend</code> &rarr; <code>python3 app.py</code></li>
+      <li>Expo app % <code>cd DetectTO</code> &rarr; <code>npx expo start</code></li>
     </ul>
-    <li> --> You can Download the RESULT Image to your device.</li>
   </li>
+  <li><strong>Test on Physical Devices:</strong> Download the Expo app from App Store (iOS) or Play Store (Android).</li>
+  <li><strong>Test on Simulator:</strong> Use these host IPs: <code>Android: "10.0.2.2:5001"</code>, <code>iOS: "127.0.0.1:5001"</code>.</li>
+  <li><strong>Download Results:</strong> You can also download the detected result image to your device.</li>
 </ol>
 
-> [!Note]
-> This is a basic interface demo for testing and visualize the model with tester images
-> You can *REPLACE YOUR OWN CUSTOM ONNX FILES* in the backend ( Utils will be needed to refine )
-
+<br>
 
 <h2>⚠️ Known Issues</h2>
 
@@ -58,11 +55,18 @@
   <li>Supports only one image at a time</li>
 </ul>
 
+> [!Note]
+> This is a basic interface demo for testing and visualizing the model with sample images.  
+> You can **replace with your own custom ONNX files** in the backend (additional utils may be needed for proper integration).
 
-<h2>On Process</h2>
+<br>
+
+<h2>🛠️⚙️ On Process</h2>
 <ul>
   <li>Adding Camera Mode/ Live-Video Mode</li>
 </ul>
+
+<br>
 
 ## Current UI/UX:
 
