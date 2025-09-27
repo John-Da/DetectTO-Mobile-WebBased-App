@@ -10,16 +10,14 @@ MODEL_FOLDER = os.path.join(os.path.dirname(__file__), "models")
 MODEL_DIR = os.listdir(MODEL_FOLDER)
 # print(MODEL_DIR)
 
-def run_model(model, img_path, thresholds, w,h):
-    image = cv.imread(img_path)
-    if image is None:
-        raise ValueError(f"Unable to load image (cv.imread returned None): {img_path}")
-    
+def run_model(model, thresholds, w,h, img=None):
     if model in MODEL_DIR:
         model = os.path.join(MODEL_FOLDER, model)
 
-    if not os.path.exists(img_path):
-        raise FileNotFoundError(f"Image not found: {img_path}")
+    if img is not None:
+        image = img.copy()
+    else:
+        raise ValueError("Either img_path or img must be provided")
     
     # img_resized = cv.resize(image, (640, 640))
     img_resized = cv.resize(image, (w, h))

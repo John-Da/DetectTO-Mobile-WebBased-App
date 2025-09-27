@@ -72,28 +72,27 @@ const ImageDetails = () => {
         const { status } = await MediaLibrary.requestPermissionsAsync(true);
         if (status !== "granted") {
           Alert.alert("Permission denied", "Cannot save image without permission.");
-          return;
           setLoading(false);
+          return;
         }
 
         // Pick a local path in cache
-        const fileUri = FileSystem.cacheDirectory + `image_${Date.now()}.png`;
+        const fileUri = FileSystem.cacheDirectory + `result_${Date.now()}.jpg`;
 
-        // Download directly to local file
-        const { uri } = await FileSystem.downloadAsync(parsed.image_url, fileUri);
+        // Convert base64 to file
+        await FileSystem.writeAsStringAsync(fileUri, parsed.image_base64, {
+          encoding: FileSystem.EncodingType.Base64,
+        });
 
         // Save to gallery
-        await MediaLibrary.saveToLibraryAsync(uri);
+        await MediaLibrary.saveToLibraryAsync(fileUri);
 
         Alert.alert("Success", "Image saved to your gallery!");
-
-        router.push("/detection");
         setLoading(false);
-      
+
       } catch (err) {
         console.error(err);
         Alert.alert("Error", "Failed to download image.");
-        router.push("/detection");
         setLoading(false);
       }
     };
@@ -112,7 +111,7 @@ const ImageDetails = () => {
         {/* Image Preview */}
         <View style={styles.imageWrapper}>
           <Image
-            source={{ uri: parsed.image_url + '?t=' + Date.now() }}
+            source={{ uri: `data:image/jpeg;base64,${parsed.image_base64}` }}
             style={[styles.image, { height: imageHeight }]}
             resizeMode="contain"
           />

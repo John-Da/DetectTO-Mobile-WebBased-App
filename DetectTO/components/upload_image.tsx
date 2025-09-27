@@ -11,7 +11,7 @@ const UploadImageBtn = ({ btn_name, mode = "gallery", bottomSheetRef }: any) => 
   const [loading, setLoading] = useState(false);
 
   const pickImage = async () => {
-    setLoading(true);
+    // setLoading(true);
     let result;
     if (mode === "gallery") {
       result = await ImagePicker.launchImageLibraryAsync({
@@ -36,7 +36,7 @@ const UploadImageBtn = ({ btn_name, mode = "gallery", bottomSheetRef }: any) => 
         pathname: "/detectionstates/detection_image",
         params: { uri },
       });
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -45,7 +45,7 @@ const UploadImageBtn = ({ btn_name, mode = "gallery", bottomSheetRef }: any) => 
     <TouchableOpacity style={styles.buttons} onPress={pickImage}>
       <Text style={styles.buttonText}>{btn_name}</Text>
     </TouchableOpacity>
-    { loading && <Loading isVisible={true} /> }
+    {/* { loading && <Loading isVisible={true} /> } */}
 
     </>
   );

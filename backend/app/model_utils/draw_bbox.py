@@ -35,34 +35,3 @@ def draw_bboxes(img, font_scaler, boxes_xyxy, labels, confidences):
         cv2.putText(img, text, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (0, 0, 0), font_thickness)
         
     return img, detection_items
-
-
-
-# import cv2
-# from collections import defaultdict
-
-# def draw_bboxes(img, font_scaler, boxes_xyxy, labels, confidences):
-#     h, w = img.shape[:2]  # image height and width
-#     # scale factors (tweak to taste)
-#     thickness = max(2, int(min(h, w) / 200))   # rectangle thickness
-#     font_scale = min(h, w) / font_scaler         # font size relative to image
-#     font_thickness = max(1, thickness // 2)
-
-#     label_counts = defaultdict(int)  # keeps track of counts per label
-#     detection_items = []
-
-#     for i, ((x1, y1, x2, y2), label, conf) in enumerate(zip(boxes_xyxy, labels, confidences)):
-#         x1, y1, x2, y2 = map(int, [x1, y1, x2, y2])  # convert to int
-        
-#         # increment count for this label
-#         label_counts[label] += 1
-#         idx = label_counts[label]
-#         detection_items.append((label, idx, conf))
-        
-#         text = f"{label} {idx}: {conf:.2f}"
-
-#         # draw rectangle
-#         cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), thickness)
-#         cv2.putText(img, text, (x1, y1 - 12),
-#                     cv2.FONT_HERSHEY_SIMPLEX, font_scale, (0, 0, 0), font_thickness)
-#     return img, detection_items
