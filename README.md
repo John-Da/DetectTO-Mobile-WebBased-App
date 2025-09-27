@@ -43,7 +43,23 @@
 </ol>
 
 > [!Note]
-> *Flask Port is <code>5001</code> in this demo. "Port Number must be the same."*
+> *Flask port is set to <code>5001</code> in this demo. The port number must match in the Expo app configuration.*  
+> You can adjust it in the backend (app.py) by modifying:
+> 
+> ```python
+> if __name__ == "__main__":
+>     app.run(host="0.0.0.0", port=5001, debug=True)
+> ```
+
+## ⚙️ Install Dependencies ( if you encounter unexpected errors )
+> If any errors occur while running the app, installing these dependencies manually can help resolve them. *Check the Package.json file for more info*
+
+First, navigate to the project directory:
+
+```bash
+% cd DetectTO
+% npm install expo-file-system expo-image-picker expo-media-library nativewind react-native-image-crop-picker react-native-reanimated react-native-safe-area-context react-native-worklets tailwindcss react-native-gesture-handler @miblanchard/react-native-slider react-native-picker-select @react-native-async-storage/async-storage
+```
 
 <br>
 
