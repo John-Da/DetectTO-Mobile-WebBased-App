@@ -30,14 +30,20 @@
 <ol>
   <li><strong>Run the servers:</strong>
     <ul>
-      <li>Flask server % <code>cd backend</code> &rarr; <code>python3 app.py</code></li>
-      <li>Expo app % <code>cd DetectTO</code> &rarr; <code>npx expo start</code></li>
+      <li>Flask server → <code>cd backend</code> &rarr; <code>python3 app.py</code></li>
+      <li>Expo app → <code>cd DetectTO</code> &rarr; <code>npx expo start</code></li>
     </ul>
   </li>
-  <li><strong>Test on Physical Devices:</strong> Download the Expo app from App Store (iOS) or Play Store (Android).</li>
+  <li><strong>Test on Physical Devices:</strong> Download the Expo app from the App Store (iOS) or Play Store (Android).</li>
+    <ul>
+      <li>use your local IP Address + Flask Port - Example: <code>100.100.100.100:5001</code></li>
+    </ul>
   <li><strong>Test on Simulator:</strong> Use these host IPs: <code>Android: "10.0.2.2:5001"</code>, <code>iOS: "127.0.0.1:5001"</code>.</li>
-  <li><strong>Download Results:</strong> You can also download the detected result image to your device.</li>
+  <li><strong>Download Results:</strong> You can download the detected result image to your device.</li>
 </ol>
+
+> [!Note]
+> *Flask Port is <code>5001</code> in this demo. "Port Number must be the same."*
 
 <br>
 
