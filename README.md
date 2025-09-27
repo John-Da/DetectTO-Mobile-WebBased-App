@@ -42,6 +42,8 @@
   <li><strong>Download Results:</strong> You can download the detected result image to your device.</li>
 </ol>
 
+<br>
+
 > [!Note]
 > *Flask port is set to <code>5001</code> in this demo. The port number must match in the Expo app configuration.*  
 > You can adjust it in the backend (app.py) by modifying:
