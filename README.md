@@ -1,6 +1,5 @@
 <div align="center">
-    <img width="100%" height="220" object="cover" alt="DetectTO" src="">
-  <h1>DetectTO</h1>
+    <h1>DetectTO for Object Detection Web App</h1>
   <p>
     "DetectTO" is a mini project created for demonstration purposes. It is a mobile web application 
     for object detection, built with React Native, Expo, and Flask. The app allows you to upload a 
