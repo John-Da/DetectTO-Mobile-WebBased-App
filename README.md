@@ -35,12 +35,12 @@
 <h2>🚀 Usage: After Downloading the Repo</h2>
 
 <ol>
-  <li>Test on Physical Devices: Download the Expo app from the App Store (iOS) or Play Store (Android).
+  <li>Test: Download the Expo app from the App Store (iOS) or Play Store (Android).
     <ul>
       <li>Use your local IP address + Flask port. Example: <code>"100.100.100.100:5001"</code></li>
+        <li> You can also check in the terminal when running the server </li>
     </ul>
   </li>
-  <li>Test on Simulator: Use these host IPs: <code>Android: "10.0.2.2:5001"</code>, <code>iOS: "127.0.0.1:5001"</code>.</li>
   <li>Download Results: You can download the detected result image to your device.</li>
 </ol>
 
