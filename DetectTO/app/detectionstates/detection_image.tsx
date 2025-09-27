@@ -92,36 +92,7 @@ const PreviewPage = () => {
   //-------
 
 
-  // const FlaskIP = Platform.OS === "android" ? "10.0.2.2:5001" : "127.0.0.1:5001"; // ------ Flask Server API ROUT -------------
-  // const FlaskIP = "-- PUT YOUR HOST IP (1.1.1.1:1) -- [ IPCONFIG ] "; // ------ Flask Server API ROUT -------------
-  // useEffect(() => {
-  //   const fetchModels = async () => {
-  //     try {
-  //       const res = await fetch(`http://${flaskIP}:5001/`); 
-  //       if (!res.ok) {
-  //         throw new Error(`Server responded with status ${res.status}`);
-  //       }
-
-  //       const data = await res.json();
-
-  //       // ✅ get the actual list from data.models
-  //       const items = (data.models || []).map((m: string) => ({
-  //         label: m,
-  //         value: m,
-  //       }));
-
-  //       setModels(items);
-  //       if (items.length > 0) setSelectedModel(items[0].value);
-  //     } catch (err) {
-  //       console.error("Error fetching models:", err);
-  //     }
-  //   };
-  //   fetchModels();
-  // }, []);
-
   // ------
-
-
   // Use `flaskIP` (not FlaskIP)
   const handleConfirm = async () => {
     if (!flaskIP) return alert("Flask server IP not set!");
@@ -136,6 +107,7 @@ const PreviewPage = () => {
 
     try {
       const response = await fetch(`http://${flaskIP}/upload`, { method: "POST", body: formData });
+      
       const result = await response.json();
       const resultId = Date.now().toString();
 
@@ -150,39 +122,6 @@ const PreviewPage = () => {
   const handleDelete = () => {
     router.push("/detection");
   };
-
-  // const handleConfirm = async () => {
-
-  //   const formData = new FormData();
-  //   formData.append("image", {
-  //     uri: uri as string,
-  //     type: "image/jpeg",
-  //     name: "upload.jpg",
-  //   } as any);
-
-  //   formData.append("models", selectedModel ?? "");
-  //   formData.append("conf", iou.toFixed(2));
-  //   formData.append("scale", labelscale.toString());
-  //   formData.append("img_width", imgWidth);
-  //   formData.append("img_height", imgHeight);
-
-  //   try {
-  //     const response = await fetch(`http://${flaskIP}/upload`, { method: "POST", body: formData });
-  //     console.log(formData)
-  //     const result = await response.json();
-  //     console.log(result)
-  //     const resultId = Date.now().toString();
-
-  //     // Navigate to ImageDetails page with result data
-  //     router.push({
-  //       pathname: `/image_details/${resultId}`,
-  //       params: { imageResult: JSON.stringify(result) },
-  //     });
-  //   } catch (error) {
-  //     console.error("Error sending data:", error);
-  //     alert("Failed to send data to server.");
-  //   }
-  // };
 
 
   return (

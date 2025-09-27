@@ -8,13 +8,11 @@ import { useFocusEffect } from '@react-navigation/native';
 
 
 const ImageDetails = () => {
-  const { width: screenWidth } = useWindowDimensions(); // -----
-
+  const { width: screenWidth } = useWindowDimensions();
   const router = useRouter();
   const { id, imageResult } = useLocalSearchParams();
-  // const parsed = imageResult ? JSON.parse(imageResult as string) : null;
-  
   const [parsed, setParsed] = useState<any>(null);
+  
   useFocusEffect(
     useCallback(() => {
       const p = imageResult ? JSON.parse(imageResult as string) : null;
@@ -120,12 +118,6 @@ const ImageDetails = () => {
         {/* Detections */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Image Details</Text>
-          {/* {parsed.detections.map((det: any, idx: number) => ( 
-            <View key={idx} style={styles.detectionRow}> 
-              <Text style={styles.detectionLabel}>{det.label}</Text> 
-              <Text style={styles.detectionConfidence}>{det.confidence.toFixed(2)} conf</Text> 
-            </View> 
-          ))} */}
           {detections.map((det: any, idx: number) => (
             <View key={idx} style={styles.detectionRow}>
               <Text style={styles.detectionLabel}>{det?.label ?? "Unknown"} {det.idx}</Text>

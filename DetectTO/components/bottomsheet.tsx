@@ -1,4 +1,4 @@
-import { Dimensions, BackHandler, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle } from 'react'
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
@@ -16,8 +16,6 @@ export type BottomSheetRefProps = {
 };
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
-// const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 50;
-
 
 const CustomBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
   ({ title, btn1, btn2 }, ref) => {
@@ -32,7 +30,6 @@ const CustomBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const scrollTo = useCallback((destination: number) => {
       'worklet';
       active.value = destination !== SCREEN_HEIGHT;
-      // active.value = destination !== 0;
       translateY.value = withSpring(destination, { damping: 50 });
     }, []);
 
@@ -51,12 +48,6 @@ const CustomBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         }
         return false; // allow default behavior (exit app or navigate back)
       };
-
-      // BackHandler.addEventListener("hardwareBackPress", onBackPress);
-
-      // return () => {
-      //   BackHandler.removeEventListener("hardwareBackPress", onBackPress);
-      // };
     }, [scrollTo]);
 
 

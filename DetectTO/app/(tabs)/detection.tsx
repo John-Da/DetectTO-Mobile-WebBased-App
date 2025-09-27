@@ -23,7 +23,7 @@ const DetectionScreen = () => {
         cameraSheetRef.current.scrollTo(SCREEN_HEIGHT);
         return true;
       }
-      return false; // allow default behavior (exit app)
+      return false;
     };
 
     BackHandler.addEventListener("hardwareBackPress", onBackPress);
