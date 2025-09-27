@@ -58,7 +58,7 @@ Expo app::
 <br>
 
 > [!Note]
-> *Flask port is set to `5001` in this demo. The port number must match in the Expo app configuration.*  
+> *Flask port is set to `5001` in this demo. The port number must match in the Expo app configuration (IP Input).*  
 > You can adjust it in the backend (app.py) by modifying:
 > 
 > ```python
