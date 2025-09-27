@@ -15,6 +15,7 @@
     <img alt="OpenCV" src="https://img.shields.io/badge/OpenCV-green?logo=opencv&logoColor=white" height="35"/>
     <img alt="Flask" src="https://img.shields.io/badge/Flask-darkblue?logo=flask&logoColor=white" height="35"/>
     <img alt="Onnx" src="https://img.shields.io/badge/Onnx_Runtime-black?logo=onnx&logoColor=white" height="35"/>
+    <img alt="TailWind" src="https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss" height="35"/>
   </p>
 </div>
 
