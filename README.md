@@ -19,6 +19,10 @@
 
 ## Demo Image
 
+- iou: 0.2
+- font scale: 700
+- onnx imgsz: 640x640
+
 <div>
   <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/test_img.jpg" alt="Test Image" />
   <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/tested_img.jpg" alt="Result Image" />
