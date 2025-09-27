@@ -15,6 +15,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import RNPickerSelect from "react-native-picker-select";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Loading from "@/components/loading";
 
 
 const PreviewPage = () => {
@@ -28,8 +29,7 @@ const PreviewPage = () => {
   const [models, setModels] = useState<{ label: string; value: string }[]>([]);
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
   
-
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   //---------
@@ -47,7 +47,6 @@ const PreviewPage = () => {
     const fetchModels = async () => {
       if (!flaskIP) return;
       try {
-        setLoading(true);
         const res = await fetch(`http://${flaskIP}/`);
         if (!res.ok) throw new Error(`Server responded ${res.status}`);
         const data = await res.json();
@@ -57,20 +56,11 @@ const PreviewPage = () => {
       } catch (err: any) {
         console.error(err);
         setError("Cannot reach Flask server. Check IP and network.");
-      } finally {
-        setLoading(false);
       }
     };
     fetchModels();
   }, [flaskIP]);
 
-  if (loading) {
-    return (
-      <SafeAreaView className="flex-1 justify-center items-center bg-[#030014]">
-        <Text className="text-white text-lg">Connecting to Flask server...</Text>
-      </SafeAreaView>
-    );
-  }
 
   if (error) {
     return (
@@ -95,6 +85,8 @@ const PreviewPage = () => {
   // ------
   // Use `flaskIP` (not FlaskIP)
   const handleConfirm = async () => {
+    setLoading(true);
+
     if (!flaskIP) return alert("Flask server IP not set!");
 
     const formData = new FormData();
@@ -107,20 +99,24 @@ const PreviewPage = () => {
 
     try {
       const response = await fetch(`http://${flaskIP}/upload`, { method: "POST", body: formData });
-      
+
       const result = await response.json();
       const resultId = Date.now().toString();
-
       router.push({ pathname: `/image_details/${resultId}`, params: { imageResult: JSON.stringify(result) } });
+      setLoading(false);
+
     } catch (err) {
       console.error("Error sending data:", err);
       alert("Failed to send data to server.");
+      setLoading(false);
     }
   };
 // -------
 
   const handleDelete = () => {
+    setLoading(true);
     router.push("/detection");
+    setLoading(false);
   };
 
 
@@ -258,6 +254,7 @@ const PreviewPage = () => {
             <Text className="text-white font-semibold text-lg">Confirm</Text>
           </TouchableOpacity>
         </View>
+        {loading && <Loading isVisible={true} /> }
       </SafeAreaView>
     </>
   );

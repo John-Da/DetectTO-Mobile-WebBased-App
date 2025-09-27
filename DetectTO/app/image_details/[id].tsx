@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as MediaLibrary from "expo-media-library";
 import * as FileSystem from "expo-file-system/legacy";
 import { useFocusEffect } from '@react-navigation/native';
+import Loading from "@/components/loading";
 
 
 const ImageDetails = () => {
@@ -12,7 +13,9 @@ const ImageDetails = () => {
   const router = useRouter();
   const { id, imageResult } = useLocalSearchParams();
   const [parsed, setParsed] = useState<any>(null);
-  
+  const [loading, setLoading] = useState(false);
+
+
   useFocusEffect(
     useCallback(() => {
       const p = imageResult ? JSON.parse(imageResult as string) : null;
@@ -46,24 +49,31 @@ const ImageDetails = () => {
   
   // Navigate back
   const handleBack = () => {
+    setLoading(true);
     router.push("/detection");
+    setLoading(false);
   };
 
   const handleShare = 
     async () => { 
+      setLoading(true);
       try { 
         await Share.share({ url: parsed.image_url, title: "Share Image", }); 
+        setLoading(false);
       } catch (error) { 
         Alert.alert("Error", "Unable to share the image."); 
+        setLoading(false);
       } 
     };
 
     const handleDownload = async () => {
+      setLoading(true);
       try {
         const { status } = await MediaLibrary.requestPermissionsAsync(true);
         if (status !== "granted") {
           Alert.alert("Permission denied", "Cannot save image without permission.");
           return;
+          setLoading(false);
         }
 
         // Pick a local path in cache
@@ -78,11 +88,13 @@ const ImageDetails = () => {
         Alert.alert("Success", "Image saved to your gallery!");
 
         router.push("/detection");
-
+        setLoading(false);
+      
       } catch (err) {
         console.error(err);
         Alert.alert("Error", "Failed to download image.");
         router.push("/detection");
+        setLoading(false);
       }
     };
 
@@ -139,6 +151,9 @@ const ImageDetails = () => {
           <Text style={styles.downloadButtonText}>Download</Text>
         </TouchableOpacity>
       </View>
+
+      {loading && <Loading isVisible={true} /> }
+
     </SafeAreaView>
     </>
   );
