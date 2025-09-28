@@ -24,9 +24,7 @@ def home():
 
 @app.route("/upload", methods=["POST"])
 def upload():
-    # Parse inputs (works for JSON or FormData)
-    data = request.get_json(silent=True) or request.form
-
+    
     if "image" not in request.files:
         return jsonify({"error": "No file part"}), 400
     file = request.files["image"]
@@ -40,11 +38,14 @@ def upload():
         return jsonify({"error": "Invalid image"}), 400
 
     # Extract parameters
-    model_name = data.get("models")
-    conf_threshold = float(data.get("conf"))
-    font_scale = float(data.get("scale"))
-    img_width = int(data.get("img_width"))
-    img_height = int(data.get("img_height"))
+    model_name = request.form.get("models")
+    conf_threshold = float(request.form.get("conf", 0.2))  # fallback
+    font_scale = float(request.form.get("scale", 700))
+    img_width = int(request.form.get("img_width", 640))
+    img_height = int(request.form.get("img_height", 640))
+
+    if not all([model_name, conf_threshold, font_scale, img_width, img_height]):
+        return jsonify({"error": "Missing parameters"}), 400
 
     # Run detection
     boxes_xyxy, labels, confidences = run_model(
@@ -63,7 +64,7 @@ def upload():
     image_url = f"data:image/jpeg;base64,{image_base64}"
 
     # Decide response
-    if request.accept_mimetypes.best == "application/json" or request.is_json:
+    if "application/json" in request.headers.get("Accept", ""):
         return jsonify({
             "image_base64": image_base64,
             "detections": detection_items,

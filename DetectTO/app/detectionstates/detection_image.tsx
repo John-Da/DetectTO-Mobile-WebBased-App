@@ -48,7 +48,7 @@ const PreviewPage = () => {
       if (!flaskIP) return;
       try {
         const res = await fetch(`http://${flaskIP}/`, {
-          headers: { Accept: "application/json" },
+          headers: { "Accept": "application/json" },
         });
         if (!res.ok) throw new Error(`Server responded ${res.status}`);
 
