@@ -35,6 +35,10 @@
 
 <h2>🚀 Usage: After Downloading the Repo</h2>
 
+> Camera mode will be added soon.
+
+> Some HTML templates ( Input / Result ) are provided to test directly on Flask Server.
+
 <ol>
   <li>Test: Download the Expo app from the App Store (iOS) or Play Store (Android).
     <ul>
@@ -126,18 +130,18 @@ First, navigate to the project directory:
 
 ## Current UI/UX:
 
-> Camera mode will be added soon.
-
-> Some HTML templates are provided to test on server side. ( *Adjustment required* )
+### 📲 Mobile View
 
 | *Start Page* | *Home Page* | *Upload Page* | *Input Screen* | *Details Screen* | *Saved Results* |
 | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
 | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-26.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-14.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-20.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-24.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-29.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-22.jpg" width="150"/> |
 | The landing screen where users can begin object detection. | A short description of this app | Allows you to select an image from gallery or take a new photo. | Customize IOU, font scale, and ImageSize (*default ONNX value*). | Summary of detection results. | Shows saved detected objects with bounding boxes. |
 
+### 🖥️ Server View
+
 <div>
-  <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/Screenshot 2025-09-28 at 12.47.48 PM.jpg" alt="Test Image" />
-  <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/Screenshot 2025-09-28 at 12.48.53 PM.jpg" alt="Result Image" />
+  <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/Screenshot1.png" alt="HomePage Image" />
+  <img width="38%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/Screenshot2.png" alt="ResultPage Image" />
 </div>
 
 ## 📄 License
