@@ -136,8 +136,8 @@ First, navigate to the project directory:
 | The landing screen where users can begin object detection. | A short description of this app | Allows you to select an image from gallery or take a new photo. | Customize IOU, font scale, and ImageSize (*default ONNX value*). | Summary of detection results. | Shows saved detected objects with bounding boxes. |
 
 <div>
-  <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/test_img.jpg" alt="Test Image" />
-  <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/tested_img.jpg" alt="Result Image" />
+  <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/Screenshot 2025-09-28 at 12.47.48 PM.jpg" alt="Test Image" />
+  <img width="47%" src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/Screenshot 2025-09-28 at 12.48.53 PM.jpg" alt="Result Image" />
 </div>
 
 ## 📄 License
