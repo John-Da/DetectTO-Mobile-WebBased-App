@@ -132,18 +132,6 @@ const PreviewPage = () => {
 
   return (
     <>
-      {/* <Stack.Screen
-        options={{
-          headerTitle: "Preview Image",
-          headerTransparent: true,
-          headerTintColor: "#fff", // makes title & back button white
-          headerTitleStyle: {
-            fontWeight: "600",
-            fontSize: 18,
-          },
-          headerBackTitle: "Back", // 👈 overrides < (tabs)
-        }}
-      /> */}
       <Stack.Screen options={{headerShown: false}} />
 
       <SafeAreaView className="flex-1 bg-[#030014]">

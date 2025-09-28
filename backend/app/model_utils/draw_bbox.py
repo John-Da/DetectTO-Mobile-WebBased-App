@@ -4,8 +4,8 @@ def draw_bboxes(img, font_scaler, boxes_xyxy, labels, confidences):
 
     h, w = img.shape[:2]
     # Thickness scales with image size
-    min_thickness = 2                # minimum thickness for small images
-    max_thickness = 10               # optional cap for extremely large images
+    min_thickness = 2             
+    max_thickness = 10              
     thickness = int(min(max_thickness, max(min_thickness, min(h, w) / 200)))
     
     font_scale = min(h, w) / font_scaler

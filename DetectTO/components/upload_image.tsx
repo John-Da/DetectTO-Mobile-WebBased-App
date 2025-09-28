@@ -8,10 +8,8 @@ import Loading from './loading';
 const UploadImageBtn = ({ btn_name, mode = "gallery", bottomSheetRef }: any) => {
   const [image, setImage] = useState<string | null>(null);
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
 
   const pickImage = async () => {
-    // setLoading(true);
     let result;
     if (mode === "gallery") {
       result = await ImagePicker.launchImageLibraryAsync({
@@ -36,7 +34,6 @@ const UploadImageBtn = ({ btn_name, mode = "gallery", bottomSheetRef }: any) => 
         pathname: "/detectionstates/detection_image",
         params: { uri },
       });
-      // setLoading(false);
     }
   };
 
@@ -45,8 +42,6 @@ const UploadImageBtn = ({ btn_name, mode = "gallery", bottomSheetRef }: any) => 
     <TouchableOpacity style={styles.buttons} onPress={pickImage}>
       <Text style={styles.buttonText}>{btn_name}</Text>
     </TouchableOpacity>
-    {/* { loading && <Loading isVisible={true} /> } */}
-
     </>
   );
 };

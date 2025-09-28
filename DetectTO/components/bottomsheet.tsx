@@ -19,12 +19,12 @@ const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const CustomBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
   ({ title, btn1, btn2 }, ref) => {
-    // const translateY = useSharedValue(0);
+
     const context = useSharedValue({ y: 0 });
     const active = useSharedValue(false);
 
-    const translateY = useSharedValue(SCREEN_HEIGHT); // start hidden
-    const MAX_TRANSLATE_Y = 50; // top offset when fully expanded
+    const translateY = useSharedValue(SCREEN_HEIGHT); 
+    const MAX_TRANSLATE_Y = 50; 
     translateY.value = Math.min(Math.max(translateY.value, MAX_TRANSLATE_Y), SCREEN_HEIGHT);
 
     const scrollTo = useCallback((destination: number) => {
@@ -43,10 +43,10 @@ const CustomBottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     useEffect(() => {
       const onBackPress = () => {
         if (active.value) {
-          scrollTo(SCREEN_HEIGHT); // hide sheet
-          return true; // prevent default behavior
+          scrollTo(SCREEN_HEIGHT);
+          return true;
         }
-        return false; // allow default behavior (exit app or navigate back)
+        return false;
       };
     }, [scrollTo]);
 
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     height: SCREEN_HEIGHT,
-    top: SCREEN_HEIGHT, // start hidden (off-screen)
+    top: SCREEN_HEIGHT, 
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     position: "absolute",
