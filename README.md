@@ -35,6 +35,8 @@
 
 <h2>🚀 Usage: After Downloading the Repo</h2>
 
+> Testing on a simulator is recommended. Unexpected crashes may occur when running the app on a physical device through the Expo app.
+
 > Camera mode will be added soon.
 
 > Some HTML templates ( Input / Result ) are provided to test directly on Flask Server.
@@ -86,7 +88,7 @@ First, navigate to the project directory:
 
 <h2>⚠️ Known Issues</h2>
 
-> *Note:* Android simulation with Android Studio is recommended.
+> Testing on a simulator is recommended. Unexpected crashes may occur when running the app on a physical device through the Expo app.
 
 <strong>Strengths:</strong>
 <ul>
