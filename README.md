@@ -139,7 +139,7 @@ First, navigate to the project directory:
 | *Start Page* | *Home Page* | *Upload Page* | *Input Screen* | *Details Screen* | *Saved Results* |
 | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
 | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-26.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-14.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-20.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-24.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-29.jpg" width="150"/> | <img src="https://github.com/John-Da/DetectTO-Object-Detection-Mobile-WebNative-App/blob/main/images/photo_2025-09-27_12-49-22.jpg" width="150"/> |
-| The landing screen where users can begin object detection. | A short description of this app | Allows you to select an image from gallery or take a new photo. | Customize IOU, font scale, and ImageSize (*default ONNX value*). | Summary of detection results. | Shows saved detected objects with bounding boxes. |
+| Connect Server through IP Address | A short description of this app | Allows you to select an image from gallery or take a new photo. | Customize IOU, font scale, and ImageSize (*default ONNX value*). | Summary of detection results. | Shows saved detected objects with bounding boxes. |
 
 ### 🖥️ Server View
 
