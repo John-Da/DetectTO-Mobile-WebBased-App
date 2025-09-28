@@ -86,6 +86,8 @@ First, navigate to the project directory:
 
 <h2>⚠️ Known Issues</h2>
 
+> *Note:* Android simulation with Android Studio is recommended.
+
 <strong>Strengths:</strong>
 <ul>
   <li>Easy to use, user-friendly UI</li>
