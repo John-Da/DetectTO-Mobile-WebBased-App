@@ -17,11 +17,9 @@ else:
 
 @app.route("/")
 def home():
-    if request.accept_mimetypes.accept_json:
-        return render_template("index.html", model_list=MODEL_LIST)
-    else:
+    if request.accept_mimetypes.best == "application/json" or request.is_json:
         return jsonify({"models": MODEL_LIST})
-
+    return render_template("index.html", model_list=MODEL_LIST)
 
 
 @app.route("/upload", methods=["POST"])
@@ -65,7 +63,7 @@ def upload():
     image_url = f"data:image/jpeg;base64,{image_base64}"
 
     # Decide response
-    if "application/json" in request.headers.get("Accept", ""):
+    if request.accept_mimetypes.best == "application/json" or request.is_json:
         return jsonify({
             "image_base64": image_base64,
             "detections": detection_items,
@@ -85,8 +83,6 @@ def upload():
             thresholds=conf_threshold,
             font_scale=font_scale,
         )
-
-
 
 
 if __name__ == "__main__":

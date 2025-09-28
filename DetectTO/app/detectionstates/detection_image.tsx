@@ -47,14 +47,16 @@ const PreviewPage = () => {
     const fetchModels = async () => {
       if (!flaskIP) return;
       try {
-        const res = await fetch(`http://${flaskIP}/`);
+        const res = await fetch(`http://${flaskIP}/`, {
+          headers: { Accept: "application/json" },
+        });
         if (!res.ok) throw new Error(`Server responded ${res.status}`);
 
         const data = await res.json();
         setModels((data.models || []).map(m => ({ label: m, value: m })));
         setSelectedModel(data.models[0] || null);
         setError(null);
-        
+
       } catch (err: any) {
         console.error(err);
         setError("Cannot reach Flask server. Check IP and network.");
