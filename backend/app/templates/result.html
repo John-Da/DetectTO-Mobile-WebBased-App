@@ -115,12 +115,15 @@
 
         <div class="img_details">
             <h2>Details</h2>
-            <p><strong>Applied:</strong><br> Model: {{ model_name }} | Conf: {{ thresholds }} <br> Label Font Size: {{font_scale}} </p>
+            <p><strong>Applied:</strong><br> Model: {{ model_name }} | Conf: {{ thresholds }} <br> Label Font Size: {{ font_scale }} </p>
             <div class="img_box">
-                {% for label, idx, confidence in detections %}
-                    <p>{{ label }} {{ idx }} <span class="conf">({{ '%.2f'|format(confidence) }})</span></p>
+                {% for item in detections %}
+                    <p>{{ item.label }} {{ item.idx }} 
+                        <span class="conf">({{ '%.2f'|format(item.confidence) }})</span>
+                    </p>
                 {% endfor %}
             </div>
+
         </div>
     </div>
 

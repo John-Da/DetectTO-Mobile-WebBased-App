@@ -49,10 +49,12 @@ const PreviewPage = () => {
       try {
         const res = await fetch(`http://${flaskIP}/`);
         if (!res.ok) throw new Error(`Server responded ${res.status}`);
+
         const data = await res.json();
         setModels((data.models || []).map(m => ({ label: m, value: m })));
         setSelectedModel(data.models[0] || null);
         setError(null);
+        
       } catch (err: any) {
         console.error(err);
         setError("Cannot reach Flask server. Check IP and network.");
@@ -98,7 +100,13 @@ const PreviewPage = () => {
     formData.append("img_height", imgHeight);
 
     try {
-      const response = await fetch(`http://${flaskIP}/upload`, { method: "POST", body: formData });
+      const response = await fetch(`http://${flaskIP}/upload`, { 
+        method: "POST", 
+        body: formData,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
 
       const result = await response.json();
       const resultId = Date.now().toString();
