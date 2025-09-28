@@ -3,7 +3,11 @@ def draw_bboxes(img, font_scaler, boxes_xyxy, labels, confidences):
     import cv2
 
     h, w = img.shape[:2]
-    thickness = max(2, int(min(h, w) / 200))
+    # Thickness scales with image size
+    min_thickness = 2                # minimum thickness for small images
+    max_thickness = 10               # optional cap for extremely large images
+    thickness = int(min(max_thickness, max(min_thickness, min(h, w) / 200)))
+    
     font_scale = min(h, w) / font_scaler
     font_thickness = max(1, thickness // 2)
 

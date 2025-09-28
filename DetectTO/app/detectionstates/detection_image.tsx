@@ -132,7 +132,7 @@ const PreviewPage = () => {
 
   return (
     <>
-      <Stack.Screen
+      {/* <Stack.Screen
         options={{
           headerTitle: "Preview Image",
           headerTransparent: true,
@@ -143,7 +143,9 @@ const PreviewPage = () => {
           },
           headerBackTitle: "Back", // 👈 overrides < (tabs)
         }}
-      />
+      /> */}
+      <Stack.Screen options={{headerShown: false}} />
+
       <SafeAreaView className="flex-1 bg-[#030014]">
         <ScrollView
           contentContainerStyle={{ paddingBottom: 120 }}
