@@ -86,22 +86,6 @@ First, navigate to the project directory:
 
 <br>
 
-<h2>⚠️ Known Issues</h2>
-
-> Testing on a simulator is recommended. Unexpected crashes may occur when running the app on a physical device through the Expo app.
-
-<strong>Strengths:</strong>
-<ul>
-  <li>Easy to use, user-friendly UI</li>
-  <li>Fast output (results are fetched directly from the host server)</li>
-</ul>
-
-<strong>Weaknesses:</strong>
-<ul>
-  <li>Requires a running host server (won’t work offline)</li>
-  <li>Supports only one image at a time</li>
-</ul>
-
 > [!Note]
 > - This is a basic interface demo for testing and visualizing the model with sample images.  
 > - You can **replace it with your own custom ONNX files** in the backend (additional utils may be needed for proper integration).  
@@ -122,10 +106,36 @@ First, navigate to the project directory:
 > model.export(format="onnx")
 > ```
 
-
 <br>
 
-<h2>🛠️⚙️ On Process</h2>
+<h2>⚠️ Known Issues</h2>
+
+> Testing on a simulator is recommended. Unexpected crashes may occur when running the app on a physical device through the Expo app.
+
+<strong>Strengths:</strong>
+<ul>
+  <li>Simple, user-friendly interface</li>
+  <li>Fast results (data is fetched directly from the host server)</li>
+</ul>
+
+<strong>Weaknesses:</strong>
+<ul>
+  <li>Requires a running host server (cannot be used offline)</li>
+  <li>Currently supports only one image input at a time</li>
+  <li>Performance may vary on the Expo Go mobile app (can be slower or laggy depending on network connection)</li>
+  <li>No local caching – each request depends on a fresh server response</li>
+  <li>Limited device testing – some features may behave differently across platforms (iOS vs Android)</li>
+</ul>
+
+<strong>Planned Improvements:</strong>
+<ul>
+  <li>Support for multiple image uploads</li>
+  <li>Offline mode with local processing</li>
+  <li>Better performance optimization for mobile devices</li>
+  <li>Cross-platform stability improvements</li>
+</ul>
+
+<strong>🛠️⚙️ On Process</strong>
 <ul>
   <li>Adding Camera Mode/ Live-Video Mode</li>
 </ul>
